@@ -1,0 +1,16 @@
+**/*.gif
+**/*.jpeg
+**/*.jpg
+**/*.png
+**/*.svg
+**/*.webp
+.next
+build
+coverage
+dist
+node_modules
+out
+package-lock.json
+pnpm-lock.yaml
+public
+yarn.lock
