@@ -206,6 +206,12 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     targetScrollY: 0
   })
 
+  const lastViewport = useRef({
+    height: 0,
+    isPortrait: true,
+    width: 0
+  })
+
   useEffect(() => {
     let animationFrameRef: number | undefined
 
@@ -232,6 +238,13 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
 
     resizeCanvas()
     init()
+
+    // Seed last viewport after first init.
+    lastViewport.current = {
+      height: window.innerHeight,
+      isPortrait: window.innerHeight >= window.innerWidth,
+      width: window.innerWidth
+    }
 
     const onMouseMove = (event: MouseEvent) => {
       animationState.current.targetMouseX = (event.clientX / window.innerWidth - 0.5) * 2
@@ -294,8 +307,28 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     if (onReady) onReady()
 
     const onResize = () => {
+      const newWidth = window.innerWidth
+      const newHeight = window.innerHeight
+      const newIsPortrait = newHeight >= newWidth
+
+      const heightDelta = Math.abs(newHeight - lastViewport.current.height)
+      const orientationChanged = newIsPortrait !== lastViewport.current.isPortrait
+      const widthChanged = newWidth !== lastViewport.current.width
+
+      // Small height-only resizes typically happen when mobile browser chrome shows/hides.
+      // Avoid reinitializing starfields for those to prevent visual popping.
+      const HEIGHT_NOISE_THRESHOLD = 180
+
       resizeCanvas()
-      init()
+
+      if (orientationChanged || widthChanged || heightDelta > HEIGHT_NOISE_THRESHOLD) {
+        init()
+
+        lastViewport.current = { width: newWidth, height: newHeight, isPortrait: newIsPortrait }
+      } else {
+        // Track latest height to prevent accumulation while still ignoring noise.
+        lastViewport.current.height = newHeight
+      }
     }
 
     const debouncedOnResize = debounce(onResize, 500)
@@ -316,7 +349,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       ref={canvasRef}
       style={{
         background: 'rgb(5, 5, 10)',
-        height: '100%',
+        height: '100dvh',
         left: 0,
         opacity: 0.55,
         position: 'fixed',
