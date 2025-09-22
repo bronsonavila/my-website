@@ -35,6 +35,7 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
 
       <DialogContent
         className="bg-background border-none p-0 shadow-none"
+        aria-describedby={undefined}
         onOpenAutoFocus={(event) => event.preventDefault()}
       >
         <DialogTitle className="sr-only">{title}</DialogTitle>
