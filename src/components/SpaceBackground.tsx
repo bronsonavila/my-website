@@ -25,12 +25,12 @@ const drawBackground = (ctx: CanvasRenderingContext2D, width: number, height: nu
 
   const bgGradient = ctx.createRadialGradient(holeX, holeY, 0, holeX, holeY, Math.max(width, height))
 
-  bgGradient.addColorStop(0, 'rgb(32,20,50)')
-  bgGradient.addColorStop(0.25, 'rgb(22,14,35)')
-  bgGradient.addColorStop(0.5, 'rgb(17,12,26)')
-  bgGradient.addColorStop(0.75, 'rgb(12,9,18)')
-  bgGradient.addColorStop(0.9, 'rgb(8,8,12)')
-  bgGradient.addColorStop(1, 'rgb(6,6,9)')
+  bgGradient.addColorStop(0, 'rgb(38,26,60)')
+  bgGradient.addColorStop(0.25, 'rgb(28,20,44)')
+  bgGradient.addColorStop(0.5, 'rgb(22,16,34)')
+  bgGradient.addColorStop(0.75, 'rgb(16,12,24)')
+  bgGradient.addColorStop(0.9, 'rgb(12,12,18)')
+  bgGradient.addColorStop(1, 'rgb(10,10,14)')
 
   ctx.fillStyle = bgGradient
 
@@ -83,10 +83,10 @@ const drawNebulaeToContext = (
 
     const nebulaGradient = ctx.createRadialGradient(nx, ny, 0, nx, ny, nr)
 
-    nebulaGradient.addColorStop(0, `hsla(${nebula.baseHue}, 70%, 22%, 0.022)`) // Darker center
-    nebulaGradient.addColorStop(0.25, `hsla(${nebula.baseHue + 8}, 75%, 26%, 0.028)`)
-    nebulaGradient.addColorStop(0.55, `hsla(${nebula.baseHue + 14}, 78%, 28%, 0.035)`)
-    nebulaGradient.addColorStop(0.85, `hsla(${nebula.baseHue + 24}, 65%, 22%, 0.012)`)
+    nebulaGradient.addColorStop(0, `hsla(${nebula.baseHue}, 70%, 24%, 0.028)`)
+    nebulaGradient.addColorStop(0.25, `hsla(${nebula.baseHue + 8}, 75%, 28%, 0.034)`)
+    nebulaGradient.addColorStop(0.55, `hsla(${nebula.baseHue + 14}, 78%, 30%, 0.041)`)
+    nebulaGradient.addColorStop(0.85, `hsla(${nebula.baseHue + 24}, 65%, 24%, 0.018)`)
     nebulaGradient.addColorStop(1, `hsla(${nebula.baseHue + 30}, 60%, 20%, 0)`)
 
     ctx.fillStyle = nebulaGradient
@@ -121,7 +121,7 @@ const drawStarsToContext = (
 
     const twinkle = 0.7 + 0.3 * Math.sin(star.phase + Date.now() * 0.0003) * star.brightness
 
-    ctx.fillStyle = `rgba(255, 255, 255, ${0.66 * twinkle})`
+    ctx.fillStyle = `rgba(255, 255, 255, ${0.85 * twinkle})`
 
     ctx.fillRect(star.x, star.y, 1, 1)
 
