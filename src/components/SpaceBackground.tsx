@@ -212,6 +212,10 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     width: 0
   })
 
+  // Stable max scroll used to normalize parallax so small visual viewport
+  // changes (mobile browser chrome show/hide) do not shift the background.
+  const stableMaxScroll = useRef(1)
+
   useEffect(() => {
     let animationFrameRef: number | undefined
 
@@ -237,6 +241,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     }
 
     resizeCanvas()
+
     init()
 
     // Seed last viewport after first init.
@@ -246,13 +251,15 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       width: window.innerWidth
     }
 
+    stableMaxScroll.current = Math.max(1, document.documentElement.scrollHeight - lastViewport.current.height)
+
     const onMouseMove = (event: MouseEvent) => {
       animationState.current.targetMouseX = (event.clientX / window.innerWidth - 0.5) * 2
       animationState.current.targetMouseY = (event.clientY / window.innerHeight - 0.5) * 2
     }
 
     const onScroll = () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      const maxScroll = stableMaxScroll.current
 
       animationState.current.targetScrollY = maxScroll > 0 ? window.scrollY / maxScroll : 0
     }
@@ -319,12 +326,14 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       // Avoid reinitializing starfields for those to prevent visual popping.
       const HEIGHT_NOISE_THRESHOLD = 180
 
-      resizeCanvas()
-
       if (orientationChanged || widthChanged || heightDelta > HEIGHT_NOISE_THRESHOLD) {
+        resizeCanvas()
+
         init()
 
         lastViewport.current = { width: newWidth, height: newHeight, isPortrait: newIsPortrait }
+
+        stableMaxScroll.current = Math.max(1, document.documentElement.scrollHeight - newHeight)
       } else {
         // Track latest height to prevent accumulation while still ignoring noise.
         lastViewport.current.height = newHeight
@@ -349,7 +358,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       ref={canvasRef}
       style={{
         background: 'rgb(5, 5, 10)',
-        height: '100dvh',
+        height: '100lvh',
         left: 0,
         opacity: 0.55,
         position: 'fixed',
