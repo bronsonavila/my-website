@@ -20,7 +20,7 @@ async function fetchAndCacheFirstImage(slug: string) {
         if (firstImage?.url) await ensureImageCached(firstImage.url)
       })()
     ])
-  } catch (error) {
+  } catch {
     // Preloading is not critical – OK to fail silently.
   }
 }

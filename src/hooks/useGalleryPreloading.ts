@@ -41,7 +41,7 @@ export function useGalleryPreloading(options: {
     const runId = preloadRunIdRef.current
     const total = images.length
 
-    let i = index
+    const i = index
 
     const advance = (j: number) => {
       if (direction === 'next') return (j + 1) % total

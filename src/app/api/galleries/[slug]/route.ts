@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { client } from '@/lib/contentful'
-import { Asset, Entry } from 'contentful'
+import { Asset, type EntryFields, type EntrySkeletonType } from 'contentful'
+
+type GalleryImageSkeleton = EntrySkeletonType<
+  {
+    description?: EntryFields.Text
+    image?: unknown
+    title?: EntryFields.Text
+  },
+  'galleryImage'
+>
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -15,17 +24,17 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
 
   if (galleries.items.length === 0) return NextResponse.json({ images: [] })
 
-  const gallery = galleries.items[0] as Entry<any>
+  const gallery = galleries.items[0]
 
-  const images = await client.getEntries({
+  const images = await client.getEntries<GalleryImageSkeleton>({
     content_type: 'galleryImage',
-    'fields.gallery.sys.id': gallery.sys.id
+    links_to_entry: gallery.sys.id
   })
 
   const normalized = images.items
     .slice()
     .reverse()
-    .map((img: Entry<any>) => {
+    .map((img) => {
       const asset = img.fields.image as Asset | undefined
       const url = asset?.fields?.file?.url
 
@@ -38,13 +47,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
       if (w) imageUrl.searchParams.set('w', w)
 
       return {
-        description: (img.fields.description as string) ?? '',
+        description: (img.fields.description as string | undefined) ?? '',
         id: img.sys.id,
-        title: (img.fields.title as string) ?? '',
+        title: (img.fields.title as string | undefined) ?? '',
         url: imageUrl.toString()
       }
     })
-    .filter((v: any) => v !== null)
+    .filter((v) => v !== null)
 
   return NextResponse.json({ images: normalized })
 }
