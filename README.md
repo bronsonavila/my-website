@@ -2,6 +2,8 @@
 
 My personal website built with Next.js, React 19, Tailwind CSS, and Contentful.
 
+![Lighthouse 100 across categories](./public/lighthouse-100.png)
+
 ## Getting Started
 
 ### 1. Prerequisites
