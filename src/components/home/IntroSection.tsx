@@ -6,7 +6,7 @@ export function IntroSection() {
       <div className="flex items-baseline justify-between">
         <h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">Bronson Avila</h1>
 
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <a
             aria-label="GitHub"
             className="text-muted-foreground hover:text-foreground transition-colors"
