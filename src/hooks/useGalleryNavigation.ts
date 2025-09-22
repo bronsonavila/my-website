@@ -1,11 +1,8 @@
-import { useCallback, useRef } from 'react'
+import { Dispatch, SetStateAction, useCallback, useRef } from 'react'
 import type { GalleryImage } from '@/lib/gallery-cache'
 
 // Provides previous/next navigation actions and tracks last navigation direction.
-export function useGalleryNavigation(
-  images: GalleryImage[] | null,
-  setIndex: React.Dispatch<React.SetStateAction<number>>
-) {
+export function useGalleryNavigation(images: GalleryImage[] | null, setIndex: Dispatch<SetStateAction<number>>) {
   const lastDirectionRef = useRef<'next' | 'prev' | null>(null)
   const preloadRunIdRef = useRef<number>(0)
 

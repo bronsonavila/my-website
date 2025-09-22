@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { RefObject, useEffect } from 'react'
 import { ensureImageCached, type GalleryImage } from '@/lib/gallery-cache'
 
 // Warms next/previous neighbors and preloads remaining images after current is ready.
@@ -7,8 +7,8 @@ export function useGalleryPreloading(options: {
   images: GalleryImage[] | null
   index: number
   isCurrentImageLoaded: boolean
-  lastDirectionRef: React.MutableRefObject<'next' | 'prev' | null>
-  preloadRunIdRef: React.MutableRefObject<number>
+  lastDirectionRef: RefObject<'next' | 'prev' | null>
+  preloadRunIdRef: RefObject<number>
 }) {
   const { open, images, index, isCurrentImageLoaded, lastDirectionRef, preloadRunIdRef } = options
 

@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import SpaceBackground from '@/components/SpaceBackground'
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({ children }: { children: ReactNode }) {
   const [isCanvasReady, setCanvasReady] = useState(false)
 
   return (
