@@ -15,23 +15,28 @@ export type GalleryListItemProps = {
 
 const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
   ({ alt, className, caption, imageUrl, title, ...props }, ref) => {
-    const [isImageHovered, setIsImageHovered] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
 
     return (
       <div
         className={cn(
-          'group relative flex h-auto w-full cursor-default justify-start gap-4 transition-all sm:grid sm:grid-cols-8 sm:gap-4',
+          'relative flex h-auto w-full cursor-default justify-start gap-4 transition-all sm:grid sm:grid-cols-8 sm:gap-4',
           className
         )}
         ref={ref}
         {...props}
       >
         <DialogTrigger asChild>
-          <div
-            className="border-border relative order-1 h-14 w-20 shrink-0 cursor-pointer overflow-hidden rounded border shadow-md sm:col-span-2 sm:aspect-[3/2] sm:h-auto sm:w-auto"
-            onMouseEnter={() => setIsImageHovered(true)}
-            onMouseLeave={() => setIsImageHovered(false)}
+          <button
+            aria-label={`Open ${title} gallery`}
+            className="border-border relative order-1 h-14 w-20 shrink-0 cursor-pointer overflow-hidden rounded border bg-transparent p-0 shadow-md sm:col-span-2 sm:aspect-[3/2] sm:h-auto sm:w-auto"
+            onBlur={() => setIsHovered(false)}
+            onFocus={() => setIsHovered(true)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            tabIndex={-1}
+            type="button"
           >
             {!isLoaded && <Skeleton className="absolute inset-0" />}
 
@@ -43,16 +48,20 @@ const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
               sizes="(min-width: 640px) 150px, 80px"
               src={imageUrl}
             />
-          </div>
+          </button>
         </DialogTrigger>
 
         <div className="z-10 order-2 flex flex-col justify-center text-left sm:col-span-6">
           <DialogTrigger asChild>
             <button
               className={`text-foreground w-fit cursor-pointer bg-transparent p-0 text-left text-base leading-tight font-semibold hover:underline ${
-                isImageHovered ? 'underline' : ''
+                isHovered ? 'underline' : ''
               }`}
               type="button"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onFocus={() => setIsHovered(true)}
+              onBlur={() => setIsHovered(false)}
             >
               {title}
             </button>

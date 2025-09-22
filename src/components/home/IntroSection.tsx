@@ -29,9 +29,9 @@ export function IntroSection() {
         </div>
       </div>
 
-      <h3 className="text-muted-foreground mt-2 text-base font-semibold sm:text-lg">
+      <h2 className="text-muted-foreground mt-2 text-base font-semibold sm:text-lg">
         Full-Stack Developer · Front-End Focus
-      </h3>
+      </h2>
     </div>
   )
 }
