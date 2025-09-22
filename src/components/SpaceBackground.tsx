@@ -276,7 +276,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
         width: canvas.width
       })
 
-      state.backgroundRotation -= 0.00003
+      state.backgroundRotation -= 0.00004
 
       drawStarsToContext(ctx, state.stars, {
         backgroundRotation: state.backgroundRotation,
