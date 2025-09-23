@@ -63,14 +63,14 @@ const drawNebulaeToContext = (
 
     const distanceFactor = nebula.distanceFactor ?? 1.0
 
-    const localScaleAmplitude = 0.02
+    const localScaleAmplitude = 0.015
     const localScrollAmplitude = 8
     const localScale =
       1 +
       (Math.abs(state.mouseX) + Math.abs(state.mouseY)) * 0.5 * (localScaleAmplitude / distanceFactor) +
       state.scrollY * (localScaleAmplitude / distanceFactor)
 
-    const localTranslateAmplitude = 6
+    const localTranslateAmplitude = 4
 
     const localOffsetX = state.mouseX * (localTranslateAmplitude / distanceFactor)
     const localOffsetY =
@@ -272,20 +272,22 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
 
       const state = animationState.current
 
-      state.mouseX += (state.targetMouseX - state.mouseX) * 0.01
-      state.mouseY += (state.targetMouseY - state.mouseY) * 0.01
+      state.mouseX += (state.targetMouseX - state.mouseX) * 0.008
+      state.mouseY += (state.targetMouseY - state.mouseY) * 0.008
       state.scrollY += (state.targetScrollY - state.scrollY) * 0.01
 
-      const parallaxAmount = 15 // Max pixel offset
+      const mouseParallaxAmount = 10
+      const scrollParallaxAmount = 15
+      const backgroundParallaxAmount = Math.max(mouseParallaxAmount, scrollParallaxAmount)
 
-      const offsetX = -state.mouseX * parallaxAmount
-      const offsetY = -state.mouseY * parallaxAmount + state.scrollY * parallaxAmount
+      const offsetX = -state.mouseX * mouseParallaxAmount
+      const offsetY = -state.mouseY * mouseParallaxAmount + state.scrollY * scrollParallaxAmount
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.save()
       ctx.translate(offsetX, offsetY)
 
-      drawBackground(ctx, canvas.width, canvas.height, parallaxAmount)
+      drawBackground(ctx, canvas.width, canvas.height, backgroundParallaxAmount)
 
       drawNebulaeToContext(ctx, state.nebulae, {
         backgroundRotation: state.backgroundRotation,
