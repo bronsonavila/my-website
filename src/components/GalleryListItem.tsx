@@ -31,8 +31,6 @@ const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
           <button
             aria-label={`Open ${title} gallery`}
             className="border-border relative order-1 h-14 w-20 shrink-0 cursor-pointer overflow-hidden rounded border bg-transparent p-0 shadow-md sm:col-span-2 sm:aspect-[3/2] sm:h-auto sm:w-auto"
-            onBlur={() => setIsHovered(false)}
-            onFocus={() => setIsHovered(true)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             tabIndex={-1}
@@ -57,11 +55,9 @@ const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
               className={`text-foreground w-fit cursor-pointer bg-transparent p-0 text-left text-base leading-tight font-semibold hover:underline ${
                 isHovered ? 'underline' : ''
               }`}
-              type="button"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              onFocus={() => setIsHovered(true)}
-              onBlur={() => setIsHovered(false)}
+              type="button"
             >
               {title}
             </button>
