@@ -41,7 +41,7 @@ const EXPERIENCES: Experience[] = [
     date: '11/2018 – 01/2021',
     description:
       'Built accessible websites and applications for clients such as the American Cancer Society, McChrystal Group, and Open Government Partnership. Handled the full development process from concept to launch, creating pixel-perfect UIs and custom content management systems.',
-    technologies: ['Django', 'Highcharts', 'JavaScript', 'Node.js', 'PHP', 'Python', 'React', 'Storybook', 'WordPress'],
+    technologies: ['Django', 'JavaScript', 'Node.js', 'PHP', 'Python', 'React', 'Storybook', 'Tailwind', 'WordPress'],
     title: 'Developer'
   }
 ]
