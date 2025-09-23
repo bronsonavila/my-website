@@ -52,7 +52,7 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
       >
         <DialogTitle className="sr-only">{title}</DialogTitle>
 
-        <div className="relative mx-auto aspect-[3/2] max-h-[65dvh] w-[92vw] max-w-7xl outline-none">
+        <div className="relative mx-auto aspect-[3/2] max-h-[65dvh] w-[92vw] max-w-7xl outline-none lg:max-h-none">
           {(!current || !isCurrentImageLoaded || !currentSrc) && <Skeleton className="absolute inset-0" />}
 
           {current && isCurrentImageLoaded && currentSrc && (
@@ -73,7 +73,7 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
             </div>
           )}
 
-          <DialogClose className="ring-offset-background focus-visible:ring-ring absolute -top-9 right-0 rounded p-2 opacity-80 transition-opacity hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
+          <DialogClose className="ring-offset-background focus-visible:ring-ring absolute -top-9 right-2 rounded p-2 opacity-80 transition-opacity hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 lg:right-0">
             <X className="h-5 w-5" />
 
             <span className="sr-only">Close</span>
