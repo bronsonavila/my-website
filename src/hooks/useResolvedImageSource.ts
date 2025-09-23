@@ -11,8 +11,14 @@ export function useResolvedImageSource(current: GalleryImage | null) {
   useEffect(() => {
     let cancelled = false
 
-    setIsCurrentImageLoaded(false)
-    setCurrentSrc(null)
+    // Delay showing the loading state to avoid a flicker of the skeleton when the image is already cached.
+    const loadingTimeout = setTimeout(() => {
+      if (cancelled) return
+
+      setCurrentSrc(null)
+      setIsCurrentImageLoaded(false)
+    }, 100)
+
     ;(async () => {
       if (!current) {
         if (currentBlobUrlRef.current) {
@@ -29,6 +35,8 @@ export function useResolvedImageSource(current: GalleryImage | null) {
       const blobUrl = await getOrCreateImageBlobUrl(current.url)
 
       if (cancelled) return
+
+      clearTimeout(loadingTimeout)
 
       if (blobUrl) {
         if (currentBlobUrlRef.current && currentBlobUrlRef.current !== blobUrl) {
@@ -53,6 +61,8 @@ export function useResolvedImageSource(current: GalleryImage | null) {
 
     return () => {
       cancelled = true
+
+      clearTimeout(loadingTimeout)
     }
   }, [current])
 
