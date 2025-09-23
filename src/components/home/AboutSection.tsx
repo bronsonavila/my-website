@@ -1,7 +1,7 @@
 export function AboutSection() {
   return (
     <div className="mb-24">
-      <h2 className="text-foreground mb-6 font-mono text-lg font-bold tracking-tight uppercase">About</h2>
+      <h2 className="text-foreground text-md mb-6 font-mono font-bold tracking-tight uppercase">About</h2>
 
       <p className="text-muted-foreground leading-relaxed">
         I&apos;m a full-stack developer specializing in front-end software engineering. I work in fully remote teams to

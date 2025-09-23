@@ -66,7 +66,7 @@ export async function GalleriesSection() {
   return (
     <div>
       <GalleryPreloader slugs={gallerySlugs} />
-      <h2 className="text-foreground mb-6 font-mono text-lg font-bold tracking-tight uppercase">Photo Galleries</h2>
+      <h2 className="text-foreground text-md mb-6 font-mono font-bold tracking-tight uppercase">Photo Galleries</h2>
 
       <ul className="space-y-9">
         {galleriesData.map(
