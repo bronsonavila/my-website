@@ -40,7 +40,7 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
       >
         <DialogTitle className="sr-only">{title}</DialogTitle>
 
-        <div className="relative mx-auto aspect-[3/2] w-[92vw] max-w-7xl outline-none">
+        <div className="relative mx-auto aspect-[3/2] max-h-[70dvh] w-[92vw] max-w-7xl outline-none">
           {(!current || !isCurrentImageLoaded || !currentSrc) && <Skeleton className="absolute inset-0" />}
 
           {current && isCurrentImageLoaded && currentSrc && (
