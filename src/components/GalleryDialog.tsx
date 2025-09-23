@@ -29,14 +29,26 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
 
   useKeyboardNavigation(open, goToPreviousImage, goToNextImage)
 
+  // Blur the focused element when the dialog is closed (prevents a lingering focus ring).
+  const handleOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      setTimeout(() => {
+        if (document.activeElement instanceof HTMLElement) document.activeElement.blur()
+      })
+    }
+
+    setOpen(isOpen)
+  }
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       {children}
 
       <DialogContent
         className="bg-background border-none p-0 shadow-none"
         aria-describedby={undefined}
         onOpenAutoFocus={(event) => event.preventDefault()}
+        onCloseAutoFocus={(event) => event.preventDefault()}
       >
         <DialogTitle className="sr-only">{title}</DialogTitle>
 
