@@ -363,7 +363,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
         opacity: 0.55,
         position: 'fixed',
         top: 0,
-        width: '100%',
+        width: '100lvw',
         zIndex: -1
       }}
     />
