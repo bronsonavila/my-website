@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
   openGraph: {
     description: siteMetadata.description,
-    images: [{ url: siteMetadata.siteImage, width: 100, height: 100 }],
+    images: [{ url: siteMetadata.siteImage, width: 512, height: 512 }],
     locale: 'en_US',
     siteName: siteMetadata.title,
     title: siteMetadata.title,
@@ -39,6 +39,8 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <meta name="color-scheme" content="dark" />
+
+        <link rel="preconnect" href="https://images.ctfassets.net" crossOrigin="anonymous" />
 
         <StructuredData />
       </head>
