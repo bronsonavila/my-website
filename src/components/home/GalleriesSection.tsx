@@ -67,6 +67,7 @@ export async function GalleriesSection() {
   return (
     <section>
       <GalleryPreloader slugs={gallerySlugs} />
+
       <SectionHeading>Photo Galleries</SectionHeading>
 
       <ul className="space-y-9">
