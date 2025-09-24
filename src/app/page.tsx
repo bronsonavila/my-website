@@ -6,11 +6,15 @@ import { ProjectsSection } from '@/components/home/ProjectsSection'
 
 export default async function Home() {
   return (
-    <div className="mx-auto max-w-screen-md px-6 py-12 font-sans md:px-8 md:py-20 lg:py-24">
+    <div className="mx-auto max-w-screen-md px-6 pt-12 pb-24 font-sans md:px-8 md:pt-20 lg:pt-24">
       <IntroSection />
+
       <AboutSection />
+
       <ExperienceSection />
+
       <ProjectsSection />
+
       <GalleriesSection />
     </div>
   )
