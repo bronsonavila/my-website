@@ -21,11 +21,13 @@ async function fetchAndCacheFirstImage(slug: string) {
       })()
     ])
   } catch {
-    // Preloading is not critical – OK to fail silently.
+    // Preloading is not critical – OK to fail silently.
   }
 }
 
-export function GalleryPreloader({ slugs }: { slugs: string[] }) {
+// Warm the cache by preloading each gallery's first image.
+// Runs once on or after window load; not used inside the gallery dialog.
+export function GalleriesFirstImagePreloader({ slugs }: { slugs: string[] }) {
   useEffect(() => {
     const preload = () => Promise.all(slugs.map(fetchAndCacheFirstImage))
 

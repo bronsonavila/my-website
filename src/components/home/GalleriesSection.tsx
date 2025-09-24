@@ -2,7 +2,7 @@ import { Asset } from 'contentful'
 import { client } from '@/lib/contentful'
 import { GalleryDialog } from '@/components/GalleryDialog'
 import { GalleryListItem } from '@/components/GalleryListItem'
-import { GalleryPreloader } from '../GalleryPreloader'
+import { GalleriesFirstImagePreloader } from '../GalleriesFirstImagePreloader'
 import { SectionHeading } from './SectionHeading'
 import type { EntryFieldTypes, EntrySkeletonType } from 'contentful'
 
@@ -66,7 +66,7 @@ export async function GalleriesSection() {
 
   return (
     <section>
-      <GalleryPreloader slugs={gallerySlugs} />
+      <GalleriesFirstImagePreloader slugs={gallerySlugs} />
 
       <SectionHeading>Photo Galleries</SectionHeading>
 
