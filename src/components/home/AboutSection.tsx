@@ -1,7 +1,9 @@
+import { SectionHeading } from './SectionHeading'
+
 export function AboutSection() {
   return (
-    <div className="mb-24">
-      <h2 className="text-foreground text-md mb-6 font-mono font-bold tracking-tight uppercase">About</h2>
+    <section>
+      <SectionHeading>About</SectionHeading>
 
       <p className="text-muted-foreground leading-relaxed">
         I&apos;m a full-stack developer specializing in front-end software engineering. I work in fully remote teams to
@@ -15,6 +17,6 @@ export function AboutSection() {
       </p>
 
       <p className="text-muted-foreground mt-4 leading-relaxed">Born and raised in Hawaii – still here to stay.</p>
-    </div>
+    </section>
   )
 }

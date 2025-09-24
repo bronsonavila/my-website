@@ -1,5 +1,6 @@
 import { client } from '@/lib/contentful'
 import { ProjectCard } from '@/components/ProjectCard'
+import { SectionHeading } from './SectionHeading'
 
 export type Project = {
   description: string
@@ -55,8 +56,8 @@ export async function ProjectsSection() {
   )
 
   return (
-    <div className="mb-24">
-      <h2 className="text-foreground text-md mb-6 font-mono font-bold tracking-tight uppercase">Featured Projects</h2>
+    <section>
+      <SectionHeading>Featured Projects</SectionHeading>
 
       <ul className="space-y-9">
         {PROJECTS.map((project) => {
@@ -69,6 +70,6 @@ export async function ProjectsSection() {
           )
         })}
       </ul>
-    </div>
+    </section>
   )
 }

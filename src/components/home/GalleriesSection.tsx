@@ -1,8 +1,9 @@
+import { Asset } from 'contentful'
+import { client } from '@/lib/contentful'
 import { GalleryDialog } from '@/components/GalleryDialog'
 import { GalleryListItem } from '@/components/GalleryListItem'
-import { client } from '@/lib/contentful'
-import { Asset } from 'contentful'
 import { GalleryPreloader } from '../GalleryPreloader'
+import { SectionHeading } from './SectionHeading'
 import type { EntryFieldTypes, EntrySkeletonType } from 'contentful'
 
 type GalleryData = {
@@ -64,9 +65,9 @@ export async function GalleriesSection() {
   const gallerySlugs = galleriesData.map((item) => item.slug)
 
   return (
-    <div>
+    <section>
       <GalleryPreloader slugs={gallerySlugs} />
-      <h2 className="text-foreground text-md mb-6 font-mono font-bold tracking-tight uppercase">Photo Galleries</h2>
+      <SectionHeading>Photo Galleries</SectionHeading>
 
       <ul className="space-y-9">
         {galleriesData.map(
@@ -80,6 +81,6 @@ export async function GalleriesSection() {
             )
         )}
       </ul>
-    </div>
+    </section>
   )
 }

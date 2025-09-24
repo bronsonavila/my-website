@@ -2,7 +2,7 @@ import { SiGithub, SiLinkedin } from 'react-icons/si'
 
 export function IntroSection() {
   return (
-    <div className="mb-24">
+    <section>
       <div className="flex items-baseline justify-between">
         <h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">Bronson Avila</h1>
 
@@ -32,6 +32,6 @@ export function IntroSection() {
       <h2 className="text-muted-foreground mt-2 text-base font-semibold sm:text-lg">
         Full-Stack Developer · Front-End Focus
       </h2>
-    </div>
+    </section>
   )
 }

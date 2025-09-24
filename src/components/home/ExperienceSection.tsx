@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import { ExternalLink } from 'lucide-react'
+import { SectionHeading } from './SectionHeading'
 
 type Experience = {
   company: string
@@ -48,8 +49,8 @@ const EXPERIENCES: Experience[] = [
 
 export function ExperienceSection() {
   return (
-    <div className="mb-24">
-      <h2 className="text-foreground text-md mb-6 font-mono font-bold tracking-tight uppercase">Experience</h2>
+    <section>
+      <SectionHeading>Experience</SectionHeading>
 
       <div className="space-y-9">
         {EXPERIENCES.map((item) => (
@@ -84,6 +85,6 @@ export function ExperienceSection() {
           <ExternalLink className="h-4 w-4" />
         </a>
       </div>
-    </div>
+    </section>
   )
 }
