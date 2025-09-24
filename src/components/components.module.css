@@ -1,0 +1,4 @@
+.galleryListItem:has(img:hover) .title,
+.projectCard:has(img:hover) .title {
+  text-decoration: underline;
+}

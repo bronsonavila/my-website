@@ -1,10 +1,12 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
 import { ExternalLink } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useState } from 'react'
 import Image from 'next/image'
+import styles from './components.module.css'
 
 type ProjectCardProps = {
   description: string
@@ -15,18 +17,45 @@ type ProjectCardProps = {
 }
 
 export function ProjectCard({ description, imageUrl, name, technologies, url }: ProjectCardProps) {
-  const [isImageHovered, setIsImageHovered] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
   return (
-    <div className="group relative flex gap-4 transition-all sm:grid sm:grid-cols-8 sm:gap-4 lg:hover:!opacity-100">
-      <div className="z-10 order-2 sm:col-span-6 md:pt-2">
+    <div
+      className={cn(
+        'group relative flex gap-4 transition-all sm:grid sm:grid-cols-8 sm:gap-4 lg:hover:!opacity-100',
+        styles.projectCard
+      )}
+    >
+      {imageUrl && (
+        <a
+          aria-label={`${name} (opens in a new tab)`}
+          className="border-border group/image relative block h-14 w-20 shrink-0 overflow-hidden rounded border shadow-md transition-shadow sm:col-span-2 sm:aspect-[3/2] sm:h-auto sm:w-auto"
+          href={url}
+          rel="noreferrer noopener"
+          tabIndex={-1}
+          target="_blank"
+        >
+          {!isLoaded && <Skeleton className="absolute inset-0" />}
+
+          <Image
+            alt={name}
+            className="object-cover brightness-90"
+            fill
+            onLoad={() => setIsLoaded(true)}
+            sizes="(min-width: 640px) 150px, 80px"
+            src={imageUrl}
+          />
+        </a>
+      )}
+
+      <div className="z-10 sm:col-span-6 md:pt-2">
         <h3>
           <a
             aria-label={`${name} (opens in a new tab)`}
-            className={`text-foreground focus-visible:text-primary inline-flex items-baseline text-base leading-tight font-semibold hover:underline ${
-              isImageHovered ? 'underline' : ''
-            }`}
+            className={cn(
+              'text-foreground focus-visible:text-primary inline-flex items-baseline text-base leading-tight font-semibold hover:underline',
+              styles.title
+            )}
             href={url}
             rel="noreferrer noopener"
             target="_blank"
@@ -47,30 +76,6 @@ export function ProjectCard({ description, imageUrl, name, technologies, url }: 
           ))}
         </ul>
       </div>
-
-      {imageUrl && (
-        <a
-          aria-label={`${name} (opens in a new tab)`}
-          className="border-border group/image relative order-1 block h-14 w-20 shrink-0 overflow-hidden rounded border shadow-md transition-shadow sm:col-span-2 sm:aspect-[3/2] sm:h-auto sm:w-auto"
-          href={url}
-          onMouseEnter={() => setIsImageHovered(true)}
-          onMouseLeave={() => setIsImageHovered(false)}
-          rel="noreferrer noopener"
-          tabIndex={-1}
-          target="_blank"
-        >
-          {!isLoaded && <Skeleton className="absolute inset-0" />}
-
-          <Image
-            alt={name}
-            className="object-cover brightness-90"
-            fill
-            onLoad={() => setIsLoaded(true)}
-            sizes="(min-width: 640px) 150px, 80px"
-            src={imageUrl}
-          />
-        </a>
-      )}
     </div>
   )
 }

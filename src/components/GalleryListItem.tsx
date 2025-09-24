@@ -5,6 +5,7 @@ import { DialogTrigger } from '@/components/ui/dialog'
 import { HTMLAttributes, forwardRef, useState } from 'react'
 import { Skeleton } from '@/components/ui/skeleton'
 import Image from 'next/image'
+import styles from './components.module.css'
 
 export type GalleryListItemProps = {
   alt: string
@@ -15,13 +16,13 @@ export type GalleryListItemProps = {
 
 const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
   ({ alt, className, caption, imageUrl, title, ...props }, ref) => {
-    const [isHovered, setIsHovered] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
 
     return (
       <div
         className={cn(
           'relative flex h-auto w-full cursor-default justify-start gap-4 transition-all sm:grid sm:grid-cols-8 sm:gap-4',
+          styles.galleryListItem,
           className
         )}
         ref={ref}
@@ -31,8 +32,6 @@ const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
           <button
             aria-label={`Open ${title} gallery`}
             className="border-border relative order-1 h-14 w-20 shrink-0 cursor-pointer overflow-hidden rounded border bg-transparent p-0 shadow-md sm:col-span-2 sm:aspect-[3/2] sm:h-auto sm:w-auto"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             tabIndex={-1}
             type="button"
           >
@@ -52,11 +51,10 @@ const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
         <div className="z-10 order-2 flex flex-col justify-center text-left sm:col-span-6">
           <DialogTrigger asChild>
             <button
-              className={`text-foreground w-fit cursor-pointer bg-transparent p-0 text-left text-base leading-tight font-semibold hover:underline ${
-                isHovered ? 'underline' : ''
-              }`}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              className={cn(
+                'text-foreground w-fit cursor-pointer bg-transparent p-0 text-left text-base leading-tight font-semibold hover:underline',
+                styles.title
+              )}
               type="button"
             >
               {title}
