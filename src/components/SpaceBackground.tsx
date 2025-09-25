@@ -358,16 +358,8 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
   return (
     <canvas
       ref={canvasRef}
-      style={{
-        background: 'rgb(5, 5, 10)',
-        height: '100lvh',
-        left: 0,
-        opacity: 0.55,
-        position: 'fixed',
-        top: 0,
-        width: '100lvw',
-        zIndex: -1
-      }}
+      className="fixed top-0 left-0 -z-10 opacity-60 sm:opacity-[.5875] md:opacity-[.575] lg:opacity-[.5625] xl:opacity-55"
+      style={{ background: 'rgb(5, 5, 10)', height: '100lvh', width: '100lvw' }}
     />
   )
 }
