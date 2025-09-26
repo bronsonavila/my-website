@@ -47,6 +47,8 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
 
     if (!ctx) return
 
+    // Functions
+
     const draw = () => {
       if (!ctx) return
 
@@ -155,6 +157,8 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
     }
+
+    // Initialization
 
     resizeCanvas()
 
