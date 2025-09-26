@@ -2,6 +2,7 @@
 
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import { debounce } from '@/lib/debounce'
+import { throttle } from '@/lib/throttle'
 import { useEffect, useRef } from 'react'
 import { CONFIG } from './config'
 import { generateNebulae, generateStars } from './generator'
@@ -169,7 +170,10 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     stableMaxScroll.current = Math.max(1, document.documentElement.scrollHeight - lastViewport.current.height)
 
     document.addEventListener('visibilitychange', handleVisibilityChange)
-    window.addEventListener('mousemove', onMouseMove)
+
+    const throttledOnMouseMove = throttle(onMouseMove, 16)
+
+    window.addEventListener('mousemove', throttledOnMouseMove)
     window.addEventListener('scroll', onScroll)
 
     draw()
@@ -182,7 +186,8 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange)
-      window.removeEventListener('mousemove', onMouseMove)
+
+      window.removeEventListener('mousemove', throttledOnMouseMove)
       window.removeEventListener('resize', debouncedOnResize)
       window.removeEventListener('scroll', onScroll)
 
