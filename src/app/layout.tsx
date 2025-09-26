@@ -9,6 +9,7 @@ import StructuredData from '@/components/StructuredData'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: './' },
   description: siteMetadata.description,
   metadataBase: new URL(siteMetadata.siteUrl),
   openGraph: {
@@ -20,9 +21,10 @@ export const metadata: Metadata = {
     type: 'website',
     url: './'
   },
+  robots: { follow: true, index: true },
   title: { default: siteMetadata.title, template: `%s | ${siteMetadata.title}` },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     creator: siteMetadata.authorUsername,
     description: siteMetadata.description,
     images: [siteMetadata.siteImage],
