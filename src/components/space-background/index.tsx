@@ -46,50 +46,6 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
 
     if (!ctx) return
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-
-    const init = () => {
-      const { width, height } = canvas
-
-      animationState.current.stars = generateStars(width, height)
-      animationState.current.nebulae = generateNebulae(width, height)
-      animationState.current.backgroundRotation = 0
-    }
-
-    resizeCanvas()
-
-    init()
-
-    // Seed last viewport after first init.
-    lastViewport.current = {
-      height: window.innerHeight,
-      isPortrait: window.innerHeight >= window.innerWidth,
-      width: window.innerWidth
-    }
-
-    stableMaxScroll.current = Math.max(1, document.documentElement.scrollHeight - lastViewport.current.height)
-
-    const onMouseMove = (event: MouseEvent) => {
-      if (animationState.current.prefersReducedMotion) return
-
-      animationState.current.targetMouseX = (event.clientX / window.innerWidth - 0.5) * 2
-      animationState.current.targetMouseY = (event.clientY / window.innerHeight - 0.5) * 2
-    }
-
-    const onScroll = () => {
-      if (animationState.current.prefersReducedMotion) return
-
-      const maxScroll = stableMaxScroll.current
-
-      animationState.current.targetScrollY = maxScroll > 0 ? window.scrollY / maxScroll : 0
-    }
-
-    window.addEventListener('mousemove', onMouseMove)
-    window.addEventListener('scroll', onScroll)
-
     const draw = () => {
       if (!ctx) return
 
@@ -146,15 +102,24 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       }
     }
 
-    document.addEventListener('visibilitychange', handleVisibilityChange)
+    const init = () => {
+      const { width, height } = canvas
 
-    draw()
+      animationState.current.stars = generateStars(width, height)
+      animationState.current.nebulae = generateNebulae(width, height)
+      animationState.current.backgroundRotation = 0
+    }
 
-    onReady?.()
+    const onMouseMove = (event: MouseEvent) => {
+      if (animationState.current.prefersReducedMotion) return
+
+      animationState.current.targetMouseX = (event.clientX / window.innerWidth - 0.5) * 2
+      animationState.current.targetMouseY = (event.clientY / window.innerHeight - 0.5) * 2
+    }
 
     const onResize = () => {
-      const newHeight = window.innerHeight
       const newWidth = window.innerWidth
+      const newHeight = window.innerHeight
       const newIsPortrait = newHeight >= newWidth
 
       const heightDelta = Math.abs(newHeight - lastViewport.current.height)
@@ -177,13 +142,46 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       }
     }
 
+    const onScroll = () => {
+      if (animationState.current.prefersReducedMotion) return
+
+      const maxScroll = stableMaxScroll.current
+
+      animationState.current.targetScrollY = maxScroll > 0 ? window.scrollY / maxScroll : 0
+    }
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+
+    resizeCanvas()
+
+    init()
+
+    // Seed last viewport after first init.
+    lastViewport.current = {
+      height: window.innerHeight,
+      isPortrait: window.innerHeight >= window.innerWidth,
+      width: window.innerWidth
+    }
+
+    stableMaxScroll.current = Math.max(1, document.documentElement.scrollHeight - lastViewport.current.height)
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('scroll', onScroll)
+
+    draw()
+
+    onReady?.()
+
     const debouncedOnResize = debounce(onResize, CONFIG.performance.debounceResize)
 
     window.addEventListener('resize', debouncedOnResize)
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange)
-
       window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('resize', debouncedOnResize)
       window.removeEventListener('scroll', onScroll)
