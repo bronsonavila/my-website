@@ -45,63 +45,67 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
       {children}
 
       <DialogContent
-        className="bg-background border-none p-0 shadow-none"
+        className="bg-background border-none p-0 shadow-xl"
         aria-describedby={undefined}
         onOpenAutoFocus={(event) => event.preventDefault()}
         onCloseAutoFocus={(event) => event.preventDefault()}
       >
         <DialogTitle className="sr-only">{title}</DialogTitle>
 
-        <div className="relative mx-auto aspect-[3/2] max-h-[65dvh] w-[92vw] max-w-7xl outline-none lg:max-h-none">
-          {(!current || !isCurrentImageLoaded || !currentSrc) && <Skeleton className="absolute inset-0" />}
+        <div className="relative mx-auto w-[100vw] max-w-7xl">
+          <div className="grid grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] items-center gap-x-3 gap-y-2 p-3 sm:gap-x-4 sm:gap-y-3 sm:p-4 lg:gap-x-6 lg:gap-y-4 lg:p-6">
+            {images && images.length > 0 && (
+              <div className="text-muted-foreground col-[2] row-[1] text-center text-sm">
+                {index + 1} of {images.length}
+              </div>
+            )}
 
-          {current && isCurrentImageLoaded && currentSrc && (
-            <NextImage
-              alt={current.description || title}
-              className="object-contain"
-              fetchPriority="high"
-              fill
-              sizes="92vw"
-              src={currentSrc}
-              unoptimized
-            />
-          )}
+            <button
+              aria-label="Previous"
+              className="bg-background/70 hover:bg-background col-[1] row-[2] justify-self-start rounded p-2 backdrop-blur disabled:opacity-40"
+              disabled={!images || images.length <= 1}
+              onClick={goToPreviousImage}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
 
-          {images && images.length > 0 && (
-            <div className="bg-background text-muted-foreground absolute -top-9 right-0 left-0 p-2 text-center text-sm shadow-[0_-1px_2px_0px_rgba(0,0,0,0.4)]">
-              {index + 1} of {images.length}
+            <div className="relative col-[2] row-[2] mx-auto aspect-[3/2] max-h-[58dvh] w-full overflow-hidden rounded-md outline-none lg:max-h-none">
+              {(!current || !isCurrentImageLoaded || !currentSrc) && <Skeleton className="absolute inset-0" />}
+
+              {current && isCurrentImageLoaded && currentSrc && (
+                <NextImage
+                  alt={current.description || title}
+                  className="object-contain"
+                  fetchPriority="high"
+                  fill
+                  sizes="92vw"
+                  src={currentSrc}
+                  unoptimized
+                />
+              )}
             </div>
-          )}
 
-          <DialogClose className="ring-offset-background focus-visible:ring-ring absolute -top-9 right-2 rounded p-2 opacity-80 transition-opacity hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 lg:right-0">
-            <X className="h-5 w-5" />
+            <button
+              aria-label="Next"
+              className="bg-background/70 hover:bg-background col-[3] row-[2] justify-self-end rounded p-2 backdrop-blur disabled:opacity-40"
+              disabled={!images || images.length <= 1}
+              onClick={goToNextImage}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
 
-            <span className="sr-only">Close</span>
-          </DialogClose>
+            <DialogClose className="ring-offset-background focus-visible:ring-ring col-[3] row-[1] justify-self-end rounded p-2 opacity-80 transition-opacity hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
+              <X className="h-5 w-5" />
 
-          <button
-            aria-label="Previous"
-            className="bg-background/70 hover:bg-background absolute top-1/2 left-2 -translate-y-1/2 rounded p-2 backdrop-blur disabled:opacity-40"
-            disabled={!images || images.length <= 1}
-            onClick={goToPreviousImage}
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
+              <span className="sr-only">Close</span>
+            </DialogClose>
 
-          <button
-            aria-label="Next"
-            className="bg-background/70 hover:bg-background absolute top-1/2 right-2 -translate-y-1/2 rounded p-2 backdrop-blur disabled:opacity-40"
-            disabled={!images || images.length <= 1}
-            onClick={goToNextImage}
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-
-          {current?.description && (
-            <div className="bg-background text-muted-foreground absolute top-full right-0 left-0 p-2 text-center text-sm shadow-[0_1px_2px_0px_rgba(0,0,0,0.4)]">
-              {current.description}
+            <div className="relative col-span-3 row-[3] flex h-0 min-h-[36px] justify-center">
+              <div className="bg-background text-muted-foreground absolute w-[100vw] max-w-7xl px-6 pt-2 pb-5 text-center">
+                <p className="line-clamp-3 text-sm">{current?.description}</p>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </DialogContent>
     </Dialog>
