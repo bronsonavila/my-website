@@ -52,8 +52,8 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
       >
         <DialogTitle className="sr-only">{title}</DialogTitle>
 
-        <div className="relative mx-auto w-[100vw] max-w-7xl">
-          <div className="grid grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] items-center gap-x-3 gap-y-2 p-3 sm:gap-x-4 sm:gap-y-3 sm:p-4 lg:gap-x-6 lg:gap-y-4 lg:p-6">
+        <div className="relative mx-auto w-[100vw] lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+          <div className="grid max-h-[70dvh] grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] items-center gap-x-3 gap-y-2 p-3 sm:gap-x-4 sm:gap-y-3 sm:p-4 lg:max-h-[80dvh] lg:gap-x-6 lg:gap-y-4 lg:p-6 xl:max-h-[90dvh] 2xl:max-h-[95dvh]">
             {images && images.length > 0 && (
               <div className="col-[2] row-[1] flex items-center justify-center gap-x-1 text-sm">
                 <div className="text-muted-foreground flex-1 text-right">{index + 1}</div>
@@ -71,7 +71,7 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
               <ChevronLeft className="h-5 w-5" />
             </button>
 
-            <div className="relative col-[2] row-[2] mx-auto aspect-[3/2] max-h-[58dvh] w-full overflow-hidden rounded-md outline-none lg:max-h-none">
+            <div className="relative col-[2] row-[2] mx-auto aspect-[3/2] h-full w-full overflow-hidden rounded-md outline-none">
               {(!current || !isCurrentImageLoaded || !currentSrc) && <Skeleton className="absolute inset-0" />}
 
               {current && isCurrentImageLoaded && currentSrc && (
@@ -103,7 +103,7 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
             </DialogClose>
 
             <div className="relative col-span-3 row-[3] flex h-0 min-h-[36px] justify-center">
-              <div className="bg-background text-muted-foreground absolute w-[100vw] max-w-7xl px-6 pt-2 pb-5 text-center">
+              <div className="bg-background text-muted-foreground absolute w-[100vw] px-6 pt-2 pb-5 text-center lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
                 <p className="line-clamp-3 text-sm">{current?.description}</p>
               </div>
             </div>
