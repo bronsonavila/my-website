@@ -55,8 +55,10 @@ export function GalleryDialog({ slug, title, children }: { slug: string; title: 
         <div className="relative mx-auto w-[100vw] max-w-7xl">
           <div className="grid grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] items-center gap-x-3 gap-y-2 p-3 sm:gap-x-4 sm:gap-y-3 sm:p-4 lg:gap-x-6 lg:gap-y-4 lg:p-6">
             {images && images.length > 0 && (
-              <div className="text-muted-foreground col-[2] row-[1] text-center text-sm">
-                {index + 1} of {images.length}
+              <div className="col-[2] row-[1] flex items-center justify-center gap-x-1 text-sm">
+                <div className="text-muted-foreground flex-1 text-right">{index + 1}</div>
+                <div className="text-muted-foreground">of</div>
+                <div className="text-muted-foreground flex-1 text-left">{images.length}</div>
               </div>
             )}
 
