@@ -54,7 +54,7 @@ export const generateStars = (width: number, height: number): Star[] => {
 
   for (let i = 0; i < starCount; i++) {
     const angle = Math.random() * Math.PI * 2
-    const baseBrightness = 0.3 + Math.random() * 0.4
+    const baseBrightness = 0.2 + Math.random() * 0.4
     const distance = width * 0.1 + Math.random() * width * 0.6
     const distanceFactor = 0.6 + 0.6 * (distance / (width * 0.7))
     const normalizedDistance = (distance - width * 0.1) / (width * 0.6)
@@ -62,7 +62,7 @@ export const generateStars = (width: number, height: number): Star[] => {
     const y = holeY + Math.sin(angle) * distance
 
     stars.push({
-      brightness: baseBrightness + normalizedDistance * 0.2,
+      brightness: baseBrightness + normalizedDistance * 0.6,
       distanceFactor,
       phase: Math.random() * Math.PI * 2,
       x,

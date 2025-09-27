@@ -98,7 +98,7 @@ export const drawStarsToContext = (
     ctx.rotate(starRotation)
     ctx.translate(-holeX, -holeY)
 
-    const twinkle = 0.7 + 0.3 * Math.sin(star.phase + Date.now() * 0.0003) * star.brightness
+    const twinkle = 0.7 + 0.2 * Math.sin(star.phase + Date.now() * 0.0003) * star.brightness
 
     ctx.fillStyle = `rgba(255, 255, 255, ${0.85 * twinkle})`
 
