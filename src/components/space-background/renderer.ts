@@ -100,9 +100,9 @@ export const drawStarsToContext = (
 
     const twinkle = 0.7 + 0.2 * Math.sin(star.phase + Date.now() * 0.0003) * star.brightness
 
-    ctx.fillStyle = `rgba(255, 255, 255, ${0.85 * twinkle})`
+    ctx.fillStyle = `rgba(${star.color}, ${0.8 * twinkle})`
 
-    ctx.fillRect(star.x, star.y, 1, 1)
+    ctx.fillRect(star.x, star.y, star.size, star.size)
 
     star.phase += 0.001
 

@@ -22,8 +22,10 @@ export interface SpaceAnimationState {
 
 export interface Star {
   brightness: number
+  color: string
   distanceFactor: number
   phase: number
+  size: number
   x: number
   y: number
 }
