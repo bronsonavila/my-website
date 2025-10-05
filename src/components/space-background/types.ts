@@ -9,6 +9,7 @@ export interface Nebula {
 
 export interface SpaceAnimationState {
   backgroundRotation: number
+  isAnimationDisabled: boolean
   mouseX: number
   mouseY: number
   nebulae: Nebula[]

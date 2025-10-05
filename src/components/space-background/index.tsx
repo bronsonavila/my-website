@@ -15,6 +15,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
 
   const animationState = useRef<SpaceAnimationState>({
     backgroundRotation: 0,
+    isAnimationDisabled: false,
     mouseX: 0,
     mouseY: 0,
     nebulae: [],
@@ -53,12 +54,19 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       if (!ctx) return
 
       const state = animationState.current
+      const animationsDisabled = state.prefersReducedMotion || state.isAnimationDisabled
 
       const { lerpAmount } = CONFIG.performance
 
-      state.mouseX += (state.targetMouseX - state.mouseX) * lerpAmount.mouse
-      state.mouseY += (state.targetMouseY - state.mouseY) * lerpAmount.mouse
-      state.scrollY += (state.targetScrollY - state.scrollY) * lerpAmount.scroll
+      if (animationsDisabled) {
+        state.mouseX = 0
+        state.mouseY = 0
+        state.scrollY = 0
+      } else {
+        state.mouseX += (state.targetMouseX - state.mouseX) * lerpAmount.mouse
+        state.mouseY += (state.targetMouseY - state.mouseY) * lerpAmount.mouse
+        state.scrollY += (state.targetScrollY - state.scrollY) * lerpAmount.scroll
+      }
 
       const backgroundParallaxAmount = Math.max(CONFIG.parallax.mouse, CONFIG.parallax.scroll)
 
@@ -80,7 +88,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
         width: canvas.width
       })
 
-      if (!state.prefersReducedMotion) state.backgroundRotation += CONFIG.rotationSpeed
+      if (!animationsDisabled) state.backgroundRotation += CONFIG.rotationSpeed
 
       drawStarsToContext(ctx, state.stars, {
         backgroundRotation: state.backgroundRotation,
@@ -114,7 +122,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     }
 
     const onMouseMove = (event: MouseEvent) => {
-      if (animationState.current.prefersReducedMotion) return
+      if (animationState.current.prefersReducedMotion || animationState.current.isAnimationDisabled) return
 
       animationState.current.targetMouseX = (event.clientX / window.innerWidth - 0.5) * 2
       animationState.current.targetMouseY = (event.clientY / window.innerHeight - 0.5) * 2
@@ -124,6 +132,8 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
       const newWidth = window.innerWidth
       const newHeight = window.innerHeight
       const newIsPortrait = newHeight >= newWidth
+
+      animationState.current.isAnimationDisabled = newWidth < 640
 
       const heightDelta = Math.abs(newHeight - lastViewport.current.height)
       const orientationChanged = newIsPortrait !== lastViewport.current.isPortrait
@@ -146,7 +156,7 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     }
 
     const onScroll = () => {
-      if (animationState.current.prefersReducedMotion) return
+      if (animationState.current.prefersReducedMotion || animationState.current.isAnimationDisabled) return
 
       const maxScroll = stableMaxScroll.current
 
@@ -161,6 +171,8 @@ const SpaceBackground = ({ onReady }: { onReady?: () => void }) => {
     // Initialization
 
     resizeCanvas()
+
+    animationState.current.isAnimationDisabled = window.innerWidth < 640
 
     init()
 

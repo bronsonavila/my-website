@@ -7,6 +7,7 @@ const STAR_COLORS = [
   '255, 220, 180', // Pale orange
   '255, 200, 200' // Pale red
 ]
+
 const WHITE = '255, 255, 255'
 
 export const generateNebulae = (width: number, height: number): Nebula[] => {
@@ -54,6 +55,8 @@ export const generateNebulae = (width: number, height: number): Nebula[] => {
 }
 
 export const generateStars = (width: number, height: number): Star[] => {
+  if (width < 640) return []
+
   const holeX = width / 2
   const holeY = height / 2
   const starDensity = width >= 1280 ? 7000 : width >= 768 ? 9000 : 13000
