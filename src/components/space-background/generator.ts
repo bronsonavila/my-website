@@ -56,7 +56,7 @@ export const generateNebulae = (width: number, height: number): Nebula[] => {
 export const generateStars = (width: number, height: number): Star[] => {
   const holeX = width / 2
   const holeY = height / 2
-  const starDensity = width >= 1280 ? 6000 : width >= 768 ? 8000 : 12000
+  const starDensity = width >= 1280 ? 7000 : width >= 768 ? 9000 : 13000
   const starCount = Math.floor((width * height) / starDensity)
   const stars: Star[] = []
 
