@@ -15,6 +15,10 @@ export function AboutSection() {
         In a past life, I worked as an attorney practicing in criminal defense (both public and private),
         plaintiffs&apos; civil rights litigation, and legislative policy.
       </p>
+
+      <p className="text-muted-foreground mt-4 leading-relaxed">
+        Currently open to new opportunities. Feel free to reach out to me via email or LinkedIn.
+      </p>
     </section>
   )
 }

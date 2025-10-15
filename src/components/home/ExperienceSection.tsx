@@ -13,7 +13,7 @@ type Experience = {
 const EXPERIENCES: Experience[] = [
   {
     company: 'Klarity',
-    date: '07/2022 – Present',
+    date: '07/2022 – 10/2025',
     description:
       'Led the development of key front-end features, resolved security vulnerabilities for SOC 2 compliance, and optimized application performance. Played a role in securing major contracts by integrating SpreadJS for Excel-like functionality and leading a WCAG 2.0 accessibility audit.',
     technologies: ['GraphQL', 'Material UI', 'MongoDB', 'Node.js', 'Okta', 'Python', 'React', 'TypeScript', 'Webpack'],
