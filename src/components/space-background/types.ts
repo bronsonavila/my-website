@@ -25,6 +25,7 @@ export interface Star {
   brightness: number
   color: string
   distanceFactor: number
+  isFast: boolean
   phase: number
   size: number
   x: number

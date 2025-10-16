@@ -78,6 +78,7 @@ export const generateStars = (width: number, height: number): Star[] => {
       brightness: baseBrightness + normalizedDistance * 0.6,
       color,
       distanceFactor,
+      isFast: Math.random() < 0.1,
       phase: Math.random() * Math.PI * 2,
       size,
       x,

@@ -93,7 +93,11 @@ export const drawStarsToContext = (
     ctx.save()
     ctx.translate(holeX, holeY)
 
-    const starRotation = state.backgroundRotation / star.distanceFactor
+    let starRotation = state.backgroundRotation / star.distanceFactor
+
+    if (star.isFast) {
+      starRotation *= 1.1
+    }
 
     ctx.rotate(starRotation)
     ctx.translate(-holeX, -holeY)
