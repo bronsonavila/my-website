@@ -7,8 +7,8 @@ export function AboutSection() {
 
       <p className="text-muted-foreground leading-relaxed">
         I&apos;m a full-stack developer specializing in front-end software engineering. I work in fully remote teams to
-        build accessible, performant, and polished web applications for enterprise customers. On the side, I enjoy
-        working on projects that involve solving problems with AI technologies.
+        build accessible, performant, and polished web sites and applications. I&apos;m especially enthusiastic about
+        projects that involve solving real-world problems with AI technologies.
       </p>
 
       <p className="text-muted-foreground mt-4 leading-relaxed">
