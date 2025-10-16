@@ -2,3 +2,10 @@
 .projectCard:has(img:hover) .title {
   text-decoration: underline;
 }
+
+.galleryListItem:has(.title:hover) img,
+.galleryListItem:has(img:hover) img,
+.projectCard:has(.title:hover) img,
+.projectCard:has(img:hover) img {
+  filter: brightness(1);
+}

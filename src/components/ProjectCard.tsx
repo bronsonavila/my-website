@@ -22,7 +22,7 @@ export function ProjectCard({ description, imageUrl, name, technologies, url }: 
   return (
     <div
       className={cn(
-        'group relative flex gap-4 transition-all sm:grid sm:grid-cols-8 sm:gap-4 lg:hover:!opacity-100',
+        'relative flex gap-4 transition-all sm:grid sm:grid-cols-8 sm:gap-4 lg:hover:!opacity-100',
         styles.projectCard
       )}
     >
@@ -39,7 +39,7 @@ export function ProjectCard({ description, imageUrl, name, technologies, url }: 
 
           <Image
             alt={name}
-            className="object-cover brightness-90"
+            className="object-cover brightness-90 transition-all"
             fill
             onLoad={() => setIsLoaded(true)}
             sizes="(min-width: 640px) 150px, 80px"

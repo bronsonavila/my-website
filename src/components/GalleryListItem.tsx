@@ -39,7 +39,7 @@ const GalleryListItem = forwardRef<HTMLDivElement, GalleryListItemProps>(
 
             <Image
               alt={alt}
-              className="object-cover brightness-90"
+              className="object-cover brightness-90 transition-all"
               fill
               onLoad={() => setIsLoaded(true)}
               sizes="(min-width: 640px) 150px, 80px"
