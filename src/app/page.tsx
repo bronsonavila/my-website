@@ -6,7 +6,7 @@ import { ProjectsSection } from '@/components/home/ProjectsSection'
 
 export default async function Home() {
   return (
-    <div className="mx-auto max-w-screen-md space-y-24 px-6 pt-12 pb-24 font-sans md:px-8 md:pt-20 lg:pt-24">
+    <div className="mx-auto max-w-screen-md space-y-24 px-6 pt-12 pb-24 font-sans md:px-8 md:pt-20 md:pb-32 lg:pt-24">
       <IntroSection />
 
       <AboutSection />
