@@ -6,5 +6,5 @@ const siteUrl = rawSiteUrl.replace(/\/+$/, '')
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
-  return [{ changeFrequency: 'weekly', lastModified: now, priority: 1, url: `${siteUrl}/` }]
+  return [{ changeFrequency: 'monthly', lastModified: now, priority: 1, url: `${siteUrl}/` }]
 }
