@@ -15,8 +15,8 @@ const EXPERIENCES: Experience[] = [
     company: 'Klarity',
     date: '07/2022 – 10/2025',
     description:
-      'Led the development of key front-end features, resolved security vulnerabilities for SOC 2 compliance, and optimized application performance. Played a role in securing major contracts by integrating SpreadJS for Excel-like functionality and leading a WCAG 2.0 accessibility audit.',
-    technologies: ['GraphQL', 'Material UI', 'MongoDB', 'Node.js', 'Okta', 'Python', 'React', 'TypeScript', 'Webpack'],
+      "Improved the front-end of Klarity's contract review platform by optimizing application performance, modernizing the codebase, and leading accessibility and security initiatives, which helped secure major contracts and ensure SOC 2 compliance.",
+    technologies: ['React', 'TypeScript', 'GraphQL', 'Webpack', 'Material UI', 'WCAG', 'MongoDB', 'Okta', 'Sentry'],
     title: 'Senior Software Engineer'
   },
   {
@@ -25,15 +25,15 @@ const EXPERIENCES: Experience[] = [
     description:
       'Rebuilt the front-end of Bbot’s web application from AngularJS to React as part of a major initiative to revamp the UI/UX of the application, which was ultimately purchased by DoorDash.',
     technologies: [
+      'React',
+      'React Native',
       'AngularJS',
-      'Cypress',
-      'Django',
       'JavaScript',
-      'MobX',
       'Node.js',
       'Python',
-      'React',
-      'React Native'
+      'Django',
+      'MobX',
+      'Cypress'
     ],
     title: 'Software Engineer'
   },
@@ -42,7 +42,7 @@ const EXPERIENCES: Experience[] = [
     date: '11/2018 – 01/2021',
     description:
       'Built accessible websites and applications for clients such as the American Cancer Society, McChrystal Group, and Open Government Partnership. Handled the full development process from concept to launch, creating pixel-perfect UIs and custom content management systems.',
-    technologies: ['Django', 'JavaScript', 'Node.js', 'PHP', 'Python', 'React', 'Storybook', 'Tailwind', 'WordPress'],
+    technologies: ['React', 'JavaScript', 'Tailwind', 'Node.js', 'Python', 'Django', 'PostgreSQL', 'WordPress', 'PHP'],
     title: 'Developer'
   }
 ]

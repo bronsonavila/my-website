@@ -6,9 +6,9 @@ export function AboutSection() {
       <SectionHeading>About</SectionHeading>
 
       <p className="text-muted-foreground leading-relaxed">
-        I&apos;m a full-stack developer specializing in front-end software engineering. I work in fully remote teams to
-        build accessible, performant, and polished web sites and applications. I&apos;m especially enthusiastic about
-        projects that involve solving real-world problems with AI technologies.
+        I&apos;m a software engineer with 7 years of experience specializing in the React and JavaScript/TypeScript
+        ecosystems. I build accessible and performant web applications and enjoy solving complex challenges with clean,
+        efficient code and AI-powered tools.
       </p>
 
       <p className="text-muted-foreground mt-4 leading-relaxed">
