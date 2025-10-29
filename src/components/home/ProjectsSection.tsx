@@ -27,11 +27,17 @@ export const PROJECTS: Project[] = [
     name: 'GPToDo',
     technologies: ['React', 'TypeScript', 'Google Gemini API', 'Supabase'],
     url: 'https://gptodo.app/'
+  },
+  {
+    description: 'Control Chrome using Google Gemini with natural language from the CLI.',
+    name: 'Chrome Gemini CLI',
+    technologies: ['Node.js', 'TypeScript', 'Google Gemini API', 'Chrome DevTools MCP'],
+    url: 'https://github.com/bronsonavila/chrome-gemini-cli'
   }
 ]
 
 async function getProjectImages() {
-  const titles = ['gptodo', 'hawaii-attorney-database', 'hi-lane-ai']
+  const titles = ['chrome-gemini-cli', 'gptodo', 'hawaii-attorney-database', 'hi-lane-ai']
   const assets = await client.getAssets({ 'fields.title[in]': titles })
 
   return assets.items
