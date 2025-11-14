@@ -17,7 +17,7 @@ export function AboutSection() {
       </p>
 
       <p className="text-muted-foreground mt-4 leading-relaxed">
-        Currently contracting full-time for a startup redefining the criminal justice system.
+        Currently open to new opportunities. Feel free to reach out to me via email or LinkedIn.
       </p>
     </section>
   )
