@@ -27,7 +27,7 @@ export function SocialLinks({ className }: { className?: string }) {
       <a
         aria-label="Email"
         className="text-muted-foreground hover:text-foreground group transition-colors"
-        href="mailto:bronson.avila@gmail.com"
+        href="mailto:bronson@bronsonavila.com"
       >
         <span className="bg-muted-foreground group-hover:bg-foreground block rounded-[1.5px] transition-colors">
           <HiMail className="h-4 w-4 fill-[rgb(5,5,10)] p-[1px] sm:h-5 sm:w-5 sm:p-[1.25px]" />
