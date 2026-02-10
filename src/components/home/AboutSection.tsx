@@ -7,15 +7,15 @@ export function AboutSection() {
       <SectionHeading>About</SectionHeading>
 
       <p className="text-muted-foreground leading-relaxed">
-        I&apos;m a software engineer with 7 years of experience specializing in the React and JavaScript/TypeScript
+        I&apos;m a software engineer with over 7 years of experience specializing in the React and JavaScript/TypeScript
         ecosystems. I build accessible and performant web applications and enjoy solving complex challenges with clean,
         efficient code and AI-powered tools.
       </p>
 
       <p className="text-muted-foreground mt-4 leading-relaxed">
-        I previously worked as an attorney practicing in criminal defense (both public and private),
-        plaintiffs&apos; civil rights litigation, and legislative policy. I still stay connected to the industry through
-        a niche consultancy developing custom technical solutions for attorneys in Hawaii:{' '}
+        I previously worked as an attorney practicing in criminal defense (both public and private), plaintiffs&apos;
+        civil rights litigation, and legislative policy. I still stay connected to the industry through a niche
+        consultancy developing custom technical solutions for attorneys in Hawaii:{' '}
         <a
           aria-label="bronsonavila.com (opens in a new tab)"
           className="text-foreground focus-visible:text-primary inline-flex items-baseline text-base leading-tight font-semibold hover:underline"
