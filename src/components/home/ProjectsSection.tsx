@@ -17,6 +17,12 @@ export const PROJECTS: Project[] = [
     url: 'https://www.hilane.ai/'
   },
   {
+    description: 'Browse AI-extracted Honolulu police arrest log data from public PDFs.',
+    name: 'Honolulu Arrest Logs',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini API', 'Node.js', 'Vercel'],
+    url: 'https://www.honoluluarrestlogs.com/'
+  },
+  {
     description: 'Search, filter, export, and visualize data on attorneys licensed in Hawaii.',
     name: 'Hawaii Attorney Database',
     technologies: ['React', 'TypeScript', 'Node.js', 'Puppeteer', 'Vitest', 'Netlify'],
@@ -37,7 +43,7 @@ export const PROJECTS: Project[] = [
 ]
 
 async function getProjectImages() {
-  const titles = ['chrome-gemini-cli', 'gptodo', 'hawaii-attorney-database', 'hi-lane-ai']
+  const titles = ['chrome-gemini-cli', 'gptodo', 'hawaii-attorney-database', 'hi-lane-ai', 'honolulu-arrest-logs']
   const assets = await client.getAssets({ 'fields.title[in]': titles })
 
   return assets.items
@@ -45,7 +51,7 @@ async function getProjectImages() {
 
 export async function ProjectsSection() {
   const projectImages = await getProjectImages()
-
+  console.log(projectImages)
   const projectImagesBySlug = projectImages.reduce(
     (acc, item) => {
       const title = (item.fields?.title as string | undefined)?.toLowerCase()
