@@ -11,12 +11,6 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    description: 'View Hawaii road closures with AI-powered route analysis.',
-    name: 'HI Lane AI',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini API', 'Mapbox', 'Supabase'],
-    url: 'https://www.hilane.ai/'
-  },
-  {
     description: 'Browse AI-extracted Honolulu police arrest log data from public PDFs.',
     name: 'Honolulu Arrest Logs',
     technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini API', 'Node.js', 'Vercel'],
@@ -29,21 +23,27 @@ export const PROJECTS: Project[] = [
     url: 'https://www.hawaiiattorneydatabase.com/'
   },
   {
+    description: 'View Hawaii road closures with AI-powered route analysis.',
+    name: 'HI Lane AI',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini API', 'Mapbox', 'Supabase'],
+    url: 'https://www.hilane.ai/'
+  },
+  {
     description: 'Convert photos of to-do lists into interactive checklists.',
     name: 'GPToDo',
     technologies: ['React', 'TypeScript', 'Google Gemini API', 'Supabase'],
     url: 'https://gptodo.app/'
   },
   {
-    description: 'Control Chrome using Google Gemini with natural language from the CLI.',
-    name: 'Chrome Gemini CLI',
-    technologies: ['Node.js', 'TypeScript', 'Google Gemini API', 'Chrome DevTools MCP'],
-    url: 'https://github.com/bronsonavila/chrome-gemini-cli'
+    description: 'Find TLDR newsletter articles that match custom criteria using OpenRouter.',
+    name: 'TLDR Newsletter Filter',
+    technologies: ['Node.js', 'TypeScript', 'OpenRouter'],
+    url: 'https://github.com/bronsonavila/tldr-newsletter-filter'
   }
 ]
 
 async function getProjectImages() {
-  const titles = ['chrome-gemini-cli', 'gptodo', 'hawaii-attorney-database', 'hi-lane-ai', 'honolulu-arrest-logs']
+  const titles = ['tldr-newsletter-filter', 'gptodo', 'hawaii-attorney-database', 'hi-lane-ai', 'honolulu-arrest-logs']
   const assets = await client.getAssets({ 'fields.title[in]': titles })
 
   return assets.items
