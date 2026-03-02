@@ -15,7 +15,7 @@ export function AboutSection() {
       <p className="text-muted-foreground mt-4 leading-relaxed">
         I previously worked as an attorney practicing in criminal defense (both public and private), plaintiffs&apos;
         civil rights litigation, and legislative policy. I still stay connected to the industry through a niche
-        consultancy developing custom technical solutions for attorneys in Hawaii:{' '}
+        consultancy developing custom technical solutions in Hawaii:{' '}
         <a
           aria-label="bronsonavila.com (opens in a new tab)"
           className="text-foreground focus-visible:text-primary inline-flex items-baseline text-base leading-tight font-semibold hover:underline"
