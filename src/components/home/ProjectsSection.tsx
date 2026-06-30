@@ -11,10 +11,10 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    description: 'Browse AI-extracted Honolulu police arrest log data from public PDFs.',
-    name: 'Honolulu Arrest Logs',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini API', 'Node.js', 'Vercel'],
-    url: 'https://www.honoluluarrestlogs.com/'
+    description: 'AI-powered document intelligence for Hawaii HOAs and condominiums.',
+    name: 'MyHui AI',
+    technologies: ['AI', 'RAG', 'JavaScript', 'Tailwind CSS', 'PostgreSQL', 'Docker'],
+    url: 'https://www.myhui.ai/'
   },
   {
     description: 'Search, filter, export, and visualize data on attorneys licensed in Hawaii.',
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
 ]
 
 async function getProjectImages() {
-  const titles = ['tldr-newsletter-filter', 'gptodo', 'hawaii-attorney-database', 'hi-lane-ai', 'honolulu-arrest-logs']
+  const titles = ['tldr-newsletter-filter', 'gptodo', 'hawaii-attorney-database', 'hi-lane-ai', 'myhui-ai']
   const assets = await client.getAssets({ 'fields.title[in]': titles })
 
   return assets.items
