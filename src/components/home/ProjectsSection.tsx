@@ -17,28 +17,28 @@ export const PROJECTS: Project[] = [
     url: 'https://www.myhui.ai/'
   },
   {
-    description: 'Search, filter, export, and visualize data on attorneys licensed in Hawaii.',
-    name: 'Hawaii Attorney Database',
-    technologies: ['React', 'TypeScript', 'Node.js', 'Puppeteer', 'Vitest', 'Netlify'],
-    url: 'https://www.hawaiiattorneydatabase.com/'
-  },
-  {
     description: 'View Hawaii road closures with AI-powered route analysis.',
     name: 'HI Lane AI',
     technologies: ['Next.js', 'React', 'TypeScript', 'Google Gemini API', 'Mapbox', 'Supabase'],
     url: 'https://www.hilane.ai/'
   },
   {
-    description: 'Convert photos of to-do lists into interactive checklists.',
-    name: 'GPToDo',
-    technologies: ['React', 'TypeScript', 'Google Gemini API', 'Supabase'],
-    url: 'https://gptodo.app/'
+    description: 'Search, filter, export, and visualize data on attorneys licensed in Hawaii.',
+    name: 'Hawaii Attorney Database',
+    technologies: ['React', 'TypeScript', 'Node.js', 'Puppeteer', 'Vitest', 'Netlify'],
+    url: 'https://www.hawaiiattorneydatabase.com/'
   },
   {
     description: 'Find TLDR newsletter articles that match custom criteria using OpenRouter.',
     name: 'TLDR Newsletter Filter',
-    technologies: ['Node.js', 'TypeScript', 'OpenRouter'],
+    technologies: ['Node.js', 'TypeScript', 'OpenRouter', 'Cheerio', 'Web Scraping'],
     url: 'https://github.com/bronsonavila/tldr-newsletter-filter'
+  },
+  {
+    description: 'Convert photos of to-do lists into interactive checklists.',
+    name: 'GPToDo',
+    technologies: ['React', 'TypeScript', 'Google Gemini API', 'Supabase', 'Material UI'],
+    url: 'https://gptodo.app/'
   }
 ]
 
